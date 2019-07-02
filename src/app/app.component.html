@@ -1,0 +1,45 @@
+<dx-load-panel [visible]="getLoading$ | async"
+               [showIndicator]="true"
+               [showPane]="true"
+               [shading]="true"
+               [closeOnOutsideClick]="false"
+               shadingColor="rgba(0,0,0,0.4)">
+</dx-load-panel>
+
+
+<div class="cis-manual">
+    <div class="cis-module-list">
+
+        <dx-data-grid [dataSource]="getModules$ | async"
+                      [showColumnHeaders]="false"
+                      [hoverStateEnabled]="true"
+                      [selectedRowKeys]="selectedRowKeys"
+                      (onSelectionChanged)="onSelectionChanged($event)"
+                      noDataText="Нет модулей">
+            <dxo-selection mode="single">
+            </dxo-selection>
+
+            <dxo-scrolling>
+            </dxo-scrolling>
+
+            <dxi-column caption="Название"
+                        dataField="name">
+            </dxi-column>
+
+        </dx-data-grid>
+
+        <dx-toolbar class="filter-builder-control">
+            <dxi-item location="center">
+                <dx-check-box [value]="getShowAllManual$ | async"
+                              (onValueChanged)="onCheckboxValueChanged($event)"
+                              text="Показать все инструкции">
+                </dx-check-box>
+            </dxi-item>
+        </dx-toolbar>
+
+    </div>
+    <div class="cis-manual-list">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
