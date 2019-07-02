@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import {
@@ -18,6 +19,7 @@ import {
     DxDateBoxModule,
     DxTagBoxModule
 } from 'devextreme-angular';
+import { appRoutes } from './app.routes';
 
 @NgModule({
     declarations: [
@@ -39,7 +41,8 @@ import {
         DxCheckBoxModule,
         DxSpeedDialActionModule,
         DxPopupModule,
-        DxScrollViewModule
+        DxScrollViewModule,
+        RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     providers: [
 
